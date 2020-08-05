@@ -1,17 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-    name: "kubecluster-ab68"
-    labels:
-        app: "kubecluster-ab68"
-    annotations:
-        kubernetes.io/ingress.class: addon-http-application-routing
+  name: "env-single-secret"
+  labels:
+    app: "env-single-secret"
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
 spec:
-    rules:
-        - host: kubecluster76cb-kubecluster-ab68.3ae64f5a47884bd2b976.eastus.aksapp.io
-          http:
-            paths:
-            - path: /
-              backend:
-                serviceName: "kubecluster-ab68"
-                servicePort: 80
+  rules:
+    - host: kubecluster76cb-kubecluster-ab68.3ae64f5a47884bd2b976.eastus.aksapp.io
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: "env-single-secret"
+              servicePort: 80

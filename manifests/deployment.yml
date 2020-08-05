@@ -1,16 +1,26 @@
-apiVersion : apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "kubecluster-ab68"
+  name: env-single-secret
 spec:
   replicas: 2
+  selector:
+    matchLabels:
+      app: env-single-secret
   template:
     metadata:
       labels:
-        app: "kubecluster-ab68"
+        app: env-single-secret
     spec:
       containers:
-        - name: "kubecluster-ab68"
-          image: "bimalvasan.azurecr.io/kubecluster"
+        - name: kubecluster-ab68
+          image: bimalvasan.azurecr.io/kubecluster
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          envFrom:
+            - secretRef:
+                name: test-secret
           ports:
-          - containerPort: 80
+            - containerPort: 8080
