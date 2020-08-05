@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: "kubecluster-ab68"
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: "kubecluster-ab68"
+    spec:
+      containers:
+        - name: "kubecluster-ab68"
+          image: "bimalvasan.azurecr.io/kubecluster"
+          ports:
+          - containerPort: 80
